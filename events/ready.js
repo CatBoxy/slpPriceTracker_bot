@@ -10,10 +10,11 @@ module.exports = {
 		async	function slpPrice() {
 			const price = await coinGecko.criptoPrice();
 			console.log(price);
-			client.user.setActivity(`$${price}`, { type: 'WATCHING' });
+			client.user.setActivity(`$${price}`);
 		}
+		slpPrice();
 		setInterval(() =>{
 			slpPrice();
-		}, 1800000);
+		}, 600000);
 	},
 };
