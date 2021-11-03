@@ -9,7 +9,6 @@ module.exports = {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 		async	function slpPrice() {
 			const price = await coinGecko.criptoPrice();
-			console.log(price);
 			client.user.setActivity(`$${price}`);
 		}
 		slpPrice();
