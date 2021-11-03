@@ -9,11 +9,11 @@ module.exports = {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 		async	function slpPrice() {
 			const price = await coinGecko.criptoPrice();
-			client.user.setActivity(`$${price}`);
+			client.user.setActivity(`$${price}`, { type: 'WATCHING' });
 		}
 		slpPrice();
 		setInterval(() =>{
 			slpPrice();
-		}, 600000);
+		}, 300000);
 	},
 };
