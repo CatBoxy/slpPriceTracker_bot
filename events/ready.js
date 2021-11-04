@@ -7,10 +7,18 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
-		async	function slpPrice() {
-			const price = await coinGecko.criptoPrice();
-			client.user.setActivity(`$${price}`, { type: 'WATCHING' });
-		}
+			async	function slpPrice() {
+				const response = await coinGecko.criptoPrice();
+				const user = await client.users.fetch('350460024981815299');
+				if (typeof response !== 'number') {
+					client.user.setActivity(`ERROR`, { type: 'WATCHING' });
+					user.send(`${response}`);
+					console.log(response);
+				}else{
+					client.user.setActivity(`$${response}`, { type: 'WATCHING' });
+				}
+			}
+
 		slpPrice();
 		setInterval(() =>{
 			slpPrice();
