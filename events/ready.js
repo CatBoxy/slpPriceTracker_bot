@@ -9,9 +9,11 @@ module.exports = {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 			async	function slpPrice() {
 				const response = await coinGecko.criptoPrice();
+				// stores owner's Discord ID
 				const user = await client.users.fetch('350460024981815299');
 				if (typeof response !== 'number') {
-					client.user.setActivity(`ERROR`, { type: 'WATCHING' });
+				// notifies discord owner the error
+					client.user.setActivity(`waiting for price`, { type: 'WATCHING' });
 					user.send(`${response}`);
 					console.log(response);
 				}else{
